@@ -20,11 +20,12 @@ class GameModel
 		return $query->fetch();
 	}
 
-	public function getLatLon($id)
+	public function getLatLon($photoid)
 	{
+
 		$sql = "SELECT latitude, longitude FROM photo WHERE id = :id LIMIT";
 		$query = $this->db->prepare($sql);
-		$query->execute(array(':id' => $id));
+		$query->execute(array(':id' => $photoid));
 
 		return $query->fetch();
 	}

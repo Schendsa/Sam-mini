@@ -20,13 +20,9 @@ class game extends Controller
 
 	public function getLatLon($id)
 	{
-		if (isset($id)) {
 		$this->game_model = $this->loadModel('Game');
-        $LatLon = $this->model->getLatLon($objectid);
-        //echo $LatLon->latitude . "," . $LatLon->longitude;
-    	} else {
-    		header('Location: ' . URL . 'game');
-    	}
+        $LatLon = $this->model->getLatLon($id);
+        echo $LatLon->latitude . "," . $LatLon->longitude;
 	}
 
 	public function score()
