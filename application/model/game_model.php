@@ -20,13 +20,21 @@ class GameModel
 		return $query->fetch();
 	}
 
-	public function getLatLon($photoid)
+	public function getLatLon($id)
 	{
-
-		$sql = "SELECT latitude, longitude FROM photo WHERE id = :id LIMIT";
+		$sql = "SELECT id, latitude, longitude FROM photo WHERE id = :id LIMIT 1";
 		$query = $this->db->prepare($sql);
-		$query->execute(array(':id' => $photoid));
+		$query->execute(array(':id' => $id));
 
 		return $query->fetch();
+	}
+
+	public function saveScore($photo_id, $score)
+	{
+		$sql = "INSERT INTO score (user_id, photo_id, score) VALUES (:user_id, :photo_id, :score)";
+		$query = $this->db->prepare($sql);
+		$query->execute(array(':user_id' => Session::get('user_id'),
+							  ':photo_id' => $photo_id,
+							  ':score' => $score));
 	}
 }

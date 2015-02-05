@@ -10,7 +10,7 @@
     </script>
 
     <!-- our JavaScript -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZQGjrV7hQyMPy50X8Jy9aRRZlaqmGwUM" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZQGjrV7hQyMPy50X8Jy9aRRZlaqmGwUM&libraries=geometry" type="text/javascript"></script>
     <script src="<?php echo URL; ?>js/application.js"></script>
 
 </body>

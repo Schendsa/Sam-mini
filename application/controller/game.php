@@ -20,13 +20,21 @@ class game extends Controller
 
 	public function getLatLon($id)
 	{
-		$this->game_model = $this->loadModel('Game');
-        $LatLon = $this->model->getLatLon($id);
-        echo $LatLon->latitude . "," . $LatLon->longitude;
+		if (isset($id)) {
+			$this->game_model = $this->loadModel('Game');
+	        $LatLon = $this->game_model->getLatLon($id);
+	        echo $LatLon->latitude . '/' . $LatLon->longitude;
+	    } else {
+			header('Location: ' . URL . 'game');
+		}	
 	}
 
-	public function score()
+	public function score($photo_id, $score)
 	{
-		
+		if (Session::get('user_logged_in')) {
+			$this->game_model = $this->loadModel('Game');
+			$this->game_model->saveScore($photo_id, $score);
+		}
+		header('Location: ' . URL . 'game');
 	}
 }
